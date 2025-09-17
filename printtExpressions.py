@@ -14,3 +14,7 @@ print("Hey Jude, don't make it bad,")
 print("Take a sad song, and make it better")
 print("Remember, to let her into your heart")
 print("Then you can start to make it better")
+
+print()
+print(200 + 400)
+print("Good morning," + " my name is David")
