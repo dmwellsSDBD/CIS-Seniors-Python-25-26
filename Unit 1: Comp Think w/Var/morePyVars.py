@@ -30,6 +30,5 @@ height = 12
 area = length * width
 volume = length * width * height
 
-# print out the values
-print("The area of our sturcture is: ", area)
-print("The volume of our structure is: " , volume)
+
+print("\n\n\n")
