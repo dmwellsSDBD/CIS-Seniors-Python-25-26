@@ -86,19 +86,27 @@ print(f"\n{student1['name']}'s average grade: {average:.2f}")
 # Part 4: Using Dictionary Methods
 # 1. Print all keys
 print("\nAll keys in the dictionary:")
-
+print(student1.keys())
 
 # 2. Print all values
 print("\nAll values in the dictionary:")
+print(student1.values())
 
 
 # 3. Print all key-value pairs
 print("\nAll the key-value pairs:")
+# print(student1.items())
+for key, value in student1.items():
+    print(f"{key}: {value}")
 
 
 #4. Safely get phone number (doesn't exist)
 # phone = 
 # print("\nPhone number:", phone)
+student1.get("phone_number")
+
+phone = student1.get("phone_number", "Not Available")
+student1.get("phone_number")
 
 
 #5 Create new student and use update()
@@ -109,7 +117,14 @@ student2 = {
 
 # Use . update() to add these fields all at once:
 # grade_level: 11, math_grade: 87, english_grade 90, science_grade: 85
-
+# more_info = {}
+# student2.update(more_info)
+student2.update({
+    "grade_level": 11,
+    "math_grade": 87,
+    "english_grade": 90, 
+    "science_grade": 85
+})
 
 
 print("\nNew student record:")
