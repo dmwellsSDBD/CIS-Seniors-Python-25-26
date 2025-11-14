@@ -1,82 +1,143 @@
 '''
-File: gradeTracker.py
-Author: Kainan Smith >:]
-Class: CIS Seniors
-Date: 9/26/25
+File Name: college_tracker.py
+Author: Elijah Snyder
+Date: 10/24/2025
 '''
+# Import statemenets
+import math
 
-print("=" * 40)
-print("Welcome to your grade tracker!")
-print("=" * 40)
+# Constants
+APPLICATION_FEE = 75.00
+AVG_ACCEPTANCE_RATE = 55.0
+MAX_IDEAL_DISTANCE = 500
 
-# Collect inputs
-studentCount = int(input("How many students are you tracking? "))
-studentName = []
-studentGrade = []
-totalGrades = 0
-numPassing = 0
-lowestScore = 100
-highestScore = 0
-studentLetterGrade = []
-numA = 0
-numB = 0
-numC = 0
-numD = 0
-numF = 0
+# Lists
+colleges = []
+locations = []
+annual_tuitions = []
+distances = []
+acceptance_rates = []
+classifications = []
 
-print("Please enter student information:")
-
-print("\n")
+# Welcome message
+print("=" * 30)
+print("COLLEGE APPLICATION TRACKER")
+print("=" * 30)
+print("Track your college applications and analyze your options!")
+print("=" * 30)
+print("")
 
 
-for count in range(studentCount):
-    sName = input("Student Name: ")
-    studentName.append(sName)
-    sGrade = int(input("Student Grade: "))
-    studentGrade.append(sGrade)
-    if sGrade >= 70:
-        numPassing += 1
-    totalGrades += sGrade
-    if sGrade < lowestScore:
-        lowestScore = sGrade
-    elif sGrade > highestScore:
-        highestScore = sGrade
+# Inputs
+person = str(input("What is your name? "))
+print(f"\nWelcome, {person}! Let's track your college applications.")
+print("")
 
-    if sGrade >= 90:
-        studentLetterGrade.append("A")
-        numA += 1
-    elif 80 <= sGrade < 90:
-        studentLetterGrade.append("B")
-        numB += 1
-    elif 70 <= sGrade < 80:
-        studentLetterGrade.append("C")
-        numC += 1
-    elif 60 <= sGrade < 70:
-        studentLetterGrade.append("D")
-        numD += 1
-    elif sGrade < 60:
-        studentLetterGrade.append("F")
-        numF += 1
-    
+print("Please enter information for 3 colleges you're considering:")
+print("")
 
-# Calculations
-gradeAverage = totalGrades / studentCount
+# College 1 Inputs
+print("--- College #1 ---")
+college = input("College Name: ")
+location = input("Location (City, State): ")
+annual_tuition = float(input("Anuual Tuition ($): "))
+distance = int(input("Distance from home (miles): "))
+acceptance_rate = float(input("Acceptance Rate (%): "))
 
-print("\n")
+if acceptance_rate >= AVG_ACCEPTANCE_RATE:
+    classification = "safety"
 
-# Output
-print("Number of Studends:", studentCount)
-print("Total of Student Grades:", totalGrades)
-print("Average:", gradeAverage)
-print("Highest Score:", highestScore)
-print("Lowest Score:", lowestScore)
-print("Amount of passing students: " + str(numPassing) + "/" + str(studentCount))
-print("Pass Rate: " + str(round(((numPassing / studentCount) * 100), 2)) + "%")
+elif acceptance_rate < AVG_ACCEPTANCE_RATE and acceptance_rate > 50.0:
+    classification = "match"
 
-print("\n")
+elif acceptance_rate < AVG_ACCEPTANCE_RATE:
+    classification = "Reach"
 
-print("A Grades (>90):", numA)
-print("B Grades (80-89):", numB)
-print("C Grades (70-79):", numC)
-print("D Grades (60-69):", numD)
-print("F Grades (<59):", numF)
+print("")
+
+# Appending to lists
+colleges.append(college)
+locations.append(location)
+annual_tuitions.append(annual_tuition)
+distances.append(distance)
+acceptance_rates.append(acceptance_rates)
+classifications.append(classification)
+
+# College 2 Inputs
+print("\n--- College #2 ---")
+college = input("College Name: ")
+location = input("Location (City, State): ")
+annual_tuition = float(input("Anuual Tuition ($): "))
+distance = int(input("Distance from home (miles): "))
+acceptance_rate = float(input("Acceptance Rate (%): "))
+
+if acceptance_rate >= AVG_ACCEPTANCE_RATE:
+    classification = "safety"
+
+elif acceptance_rate < AVG_ACCEPTANCE_RATE and acceptance_rate > 50.0:
+    classification = "match"
+
+elif acceptance_rate < AVG_ACCEPTANCE_RATE:
+    classification = "Reach"
+
+colleges.append(college)
+locations.append(location)
+annual_tuitions.append(annual_tuition)
+distances.append(distance)
+acceptance_rates.append(acceptance_rate)
+classifications.append(classification)
+
+# College 3 Inputs
+print("\n--- College #3 ---")
+college = input("College Name: ")
+location = input("Location (City, State): ")
+annual_tuition = float(input("Anuual Tuition ($): "))
+distance = int(input("Distance from home (miles): "))
+acceptance_rate = float(input("Acceptance Rate (%): "))
+
+if acceptance_rate >= AVG_ACCEPTANCE_RATE:
+    classification = "safety"
+
+elif acceptance_rate < AVG_ACCEPTANCE_RATE and acceptance_rate > 50.0:
+    classification = "match"
+
+elif acceptance_rate < AVG_ACCEPTANCE_RATE:
+    classification = "Reach"
+
+colleges.append(college)
+locations.append(location)
+annual_tuitions.append(annual_tuition)
+distances.append(distance)
+acceptance_rates.append(acceptance_rate)
+classifications.append(classification)
+
+
+# College Application Summary
+print("\n\n")
+print("=" * 30)
+print("YOUR COLLEGE APPLICATION SUMMARY")
+print("=" * 30)
+print("")
+
+print(f"College1: {colleges[0]}")
+print(f"Location: {locations[0]}")
+print(f"Annual Tuition: {annual_tuitions[0]:.2f}")
+print(f"Classification: {classifications[0]}")
+four_year_total = annual_tuition[0] * 4
+print(f"4-Year Total Cost: ${four_year_total:.2f}")
+print("")
+
+print(f"College1: {colleges[1]}")
+print(f"Location: {locations[1]}")
+print(f"Annual Tuition: {annual_tuitions[1]:.2f}")
+print(f"Classification: {classifications[1]}")
+four_year_total = annual_tuitions[1] * 4
+print(f"4-Year Total Cost: ${four_year_total:.2f}")
+print("")
+
+print(f"College1: {colleges[2]}")
+print(f"Location: {locations[2]}")
+print(f"Annual Tuition: {annual_tuitions[2]:.2f}")
+print(f"Classification: {classifications[2]}")
+four_year_total = annual_tuitions[2] * 4
+print(f"4-Year Total Cost: ${four_year_total:.2f}")
